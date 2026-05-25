@@ -23,6 +23,7 @@ public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
+
     /**
      * Obtener perfil de usuario por ID
      */
@@ -152,6 +153,63 @@ public class UsuarioController {
         return ResponseEntity.ok(ApiResponseDTO.success(
                 usuarios,
                 "Usuarios obtenidos exitosamente",
+                request.getRequestURI()
+        ));
+    }
+
+    /**
+     * Desactivar usuario (ADMIN)
+     */
+    @PutMapping("/desactivar/{usuarioId}")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    public ResponseEntity<ApiResponseDTO<Void>> desactivarUsuario(
+            @PathVariable Long usuarioId,
+            HttpServletRequest request) {
+
+        log.info("❌ Admin desactivando usuario ID: {}", usuarioId);
+        usuarioService.desactivarUsuario(usuarioId);
+
+        return ResponseEntity.ok(ApiResponseDTO.success(
+                null,
+                "Usuario desactivado exitosamente",
+                request.getRequestURI()
+        ));
+    }
+
+    /**
+     * Reactivar usuario (ADMIN)
+     */
+    @PutMapping("/reactivar/{usuarioId}")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    public ResponseEntity<ApiResponseDTO<Void>> reactivarUsuario(
+            @PathVariable Long usuarioId,
+            HttpServletRequest request) {
+
+        log.info("✅ Admin reactivando usuario ID: {}", usuarioId);
+        usuarioService.reactivarUsuario(usuarioId);
+
+        return ResponseEntity.ok(ApiResponseDTO.success(
+                null,
+                "Usuario reactivado exitosamente",
+                request.getRequestURI()
+        ));
+    }
+
+    /**
+     * Eliminar usuario permanentemente (ADMIN)
+     */
+    @DeleteMapping("/{usuarioId}")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    public ResponseEntity<ApiResponseDTO<Void>> eliminarUsuario(
+            @PathVariable Long usuarioId,
+            HttpServletRequest request) {
+
+        log.info("🗑️ Admin eliminando usuario ID: {}", usuarioId);
+        usuarioService.eliminarUsuario(usuarioId);
+
+        return ResponseEntity.ok(ApiResponseDTO.success(
+                null,
+                "Usuario eliminado exitosamente",
                 request.getRequestURI()
         ));
     }

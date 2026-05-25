@@ -112,5 +112,10 @@ public interface ColaVirtualRepository extends JpaRepository<ColaVirtual, Long> 
     @Query("SELECT c FROM ColaVirtual c WHERE c.visitante.id = :visitanteId AND c.atendido = false ORDER BY c.prioridad ASC, c.horaIngresoCola ASC")
     List<ColaVirtual> findColasActivasByVisitanteId(@Param("visitanteId") Long visitanteId);
 
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM ColaVirtual c WHERE c.visitante.id = :visitanteId")
+    void deleteByVisitanteId(@Param("visitanteId") Long visitanteId);
+
     
 }

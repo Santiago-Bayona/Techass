@@ -6,6 +6,7 @@ import com.techpark.techpark_uq.model.dto.UsuarioDTO;
 import com.techpark.techpark_uq.model.entity.RolUsuario;
 import com.techpark.techpark_uq.model.entity.Usuario;
 import com.techpark.techpark_uq.model.entity.Visitante;
+import com.techpark.techpark_uq.repository.ColaVirtualRepository;
 import com.techpark.techpark_uq.repository.UsuarioRepository;
 import com.techpark.techpark_uq.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,8 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final UsuarioMapper usuarioMapper;
     private final PasswordEncoder passwordEncoder;
-    private final EmailService emailService;  // Inyectar servicio de correo
+    private final EmailService emailService;
+    private final ColaVirtualRepository colaVirtualRepository;
 
     /**
      * Registrar un nuevo visitante con envío de correo de bienvenida
@@ -214,9 +216,7 @@ public class UsuarioService {
         
         log.info("✅ Contraseña actualizada para usuario: {}", usuario.getEmail());
         
-        // Opcional: Enviar correo de confirmación
         try {
-            // emailService.enviarCorreoPasswordCambiada(usuario.getNombre(), usuario.getEmail());
         } catch (Exception e) {
             log.warn("No se pudo enviar correo de cambio de contraseña");
         }
@@ -248,5 +248,66 @@ public class UsuarioService {
         log.info("✅ Saldo recargado. Nuevo saldo: ${}", nuevoSaldo);
         
         return usuarioMapper.toDto(updated);
+    }
+
+    /**
+     * Desactivar usuario
+     */
+    @Transactional
+    public void desactivarUsuario(Long usuarioId) {
+        log.info("❌ Desactivando usuario ID: {}", usuarioId);
+
+        Usuario usuario = usuarioRepository.findById(usuarioId)
+                .orElseThrow(() -> new BusinessException("Usuario no encontrado", "USUARIO_NO_ENCONTRADO"));
+
+        usuario.setActivo(false);
+        usuarioRepository.save(usuario);
+
+        log.info("✅ Usuario desactivado: {}", usuario.getEmail());
+    }
+
+    /**
+     * Reactivar usuario
+     */
+    @Transactional
+    public void reactivarUsuario(Long usuarioId) {
+        log.info("✅ Reactivando usuario ID: {}", usuarioId);
+
+        Usuario usuario = usuarioRepository.findById(usuarioId)
+                .orElseThrow(() -> new BusinessException("Usuario no encontrado", "USUARIO_NO_ENCONTRADO"));
+
+        usuario.setActivo(true);
+        usuarioRepository.save(usuario);
+
+        log.info("✅ Usuario reactivado: {}", usuario.getEmail());
+    }
+
+    /**
+     * Eliminar usuario permanentemente (elimina datos relacionados primero)
+     */
+    /**
+     * Eliminar usuario permanentemente (elimina datos relacionados primero)
+     */
+    @Transactional
+    public void eliminarUsuario(Long id) {
+        log.info("🗑️ Eliminando usuario ID: {}", id);
+
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Usuario no encontrado", "USUARIO_NO_ENCONTRADO"));
+
+        // Si es visitante, eliminar datos relacionados primero
+        if (usuario instanceof Visitante) {
+            Visitante visitante = (Visitante) usuario;
+            log.info("🗑️ Eliminando datos relacionados del visitante: {}", visitante.getEmail());
+
+            // Eliminar colas virtuales PRIMERO
+            colaVirtualRepository.deleteByVisitanteId(id);
+            log.info("   ✅ Colas virtuales eliminadas");
+
+            // El historial se elimina en cascada automáticamente
+        }
+
+        usuarioRepository.deleteById(id);
+        log.info("✅ Usuario eliminado: {}", usuario.getEmail());
     }
 }
