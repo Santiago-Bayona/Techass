@@ -1,0 +1,464 @@
+.mapa-container {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mapa-header {
+  margin-bottom: 20px;
+}
+
+.mapa-header h2 {
+  color: #2c3e50;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.mapa-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* FIX: grid con min-width: 0 para evitar desbordamiento */
+.mapa-content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* FIX: wrapper que contiene el canvas y lo escala correctamente */
+.canvas-wrapper {
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* FIX: canvas ocupa el ancho del wrapper; height: auto mantiene proporciones */
+.mapa-canvas {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  cursor: crosshair;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mapa-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 650px;
+  overflow-y: auto;
+  padding-right: 5px;
+  min-width: 0;
+}
+
+.panel-section {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  flex-shrink: 0;
+}
+
+.panel-section h3 {
+  color: #667eea;
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Selectores */
+.selectors {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.selectors select {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 12px;
+  background: white;
+  cursor: pointer;
+  color: #333;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.selectors select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.btn-calcular {
+  background-color: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.btn-calcular:hover {
+  background-color: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-calcular:active {
+  transform: translateY(0);
+}
+
+/* Info Ruta */
+.ruta-info {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  border-color: #c3e6cb;
+}
+
+.ruta-info h3 {
+  color: #155724;
+  text-transform: none;
+}
+
+.ruta-mensaje {
+  color: #155724;
+  font-size: 13px;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.ruta-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 8px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.stat .label {
+  font-size: 11px;
+  color: #155724;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.stat .value {
+  font-size: 14px;
+  color: #155724;
+  font-weight: 700;
+}
+
+.ruta-pasos {
+  max-height: 150px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.paso {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 12px;
+}
+
+.paso:last-child {
+  border-bottom: none;
+}
+
+.numero {
+  background: #667eea;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 11px;
+}
+
+.nombre {
+  flex: 1;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.distancia {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+/* Info Atracción */
+.atraccion-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.atraccion-detail p {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.atraccion-detail strong {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.estado {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+
+.estado.ACTIVA {
+  background: #d4edda;
+  color: #155724;
+}
+
+.estado.MANTENIMIENTO {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.estado.CERRADA {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.atraccion-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.btn-cola {
+  flex: 1;
+  padding: 8px 12px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.btn-cola:hover:not(:disabled) {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-cola:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-cola:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Leyenda */
+.legend {
+  background: white;
+  border: 1px solid #e0e0e0;
+}
+
+.legend h3 {
+  text-transform: none;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 12px;
+  color: #333;
+}
+
+.legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  border: 1px solid #ccc;
+}
+
+/* Análisis del Grafo */
+.grafo-info {
+  background: #f0f0f0;
+  border: 1px solid #e0e0e0;
+}
+
+.grafo-info h3 {
+  text-transform: none;
+}
+
+.grafo-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Mensaje de favoritos */
+.mensaje {
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  text-align: center;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mensaje.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.mensaje.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Header de atracción con corazón */
+.atraccion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.atraccion-header h3 {
+  margin: 0;
+  flex: 1;
+  color: #2c3e50;
+  font-size: 15px;
+}
+
+/* Botón corazón */
+.heart-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.heart-btn:hover {
+  transform: scale(1.3);
+}
+
+.heart-btn.favorito {
+  animation: heartBeat 0.3s ease;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* SCROLLBAR */
+.mapa-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mapa-panel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.mapa-panel::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 3px;
+}
+
+.mapa-panel::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .mapa-content {
+    grid-template-columns: 1fr 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mapa-content {
+    grid-template-columns: 1fr;
+  }
+
+  .mapa-panel {
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .mapa-panel {
+    order: -1;
+  }
+
+  .mapa-content {
+    grid-template-columns: 1fr;
+  }
+}

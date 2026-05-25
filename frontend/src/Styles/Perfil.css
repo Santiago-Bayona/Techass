@@ -1,0 +1,212 @@
+.perfil-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .perfil-header {
+    margin-bottom: 30px;
+  }
+  
+  .perfil-header h2 {
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .info-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .info-card h3 {
+    color: #667eea;
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .info-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info-item label {
+    font-weight: 600;
+    color: #667eea;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  
+  .info-item p {
+    color: #2c3e50;
+    font-size: 16px;
+  }
+  
+  /* Saldo */
+  .saldo-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .saldo-display {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .saldo-label {
+    font-weight: 600;
+    color: #667eea;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  
+  .saldo-amount {
+    font-size: 32px;
+    font-weight: 700;
+    color: #27ae60;
+  }
+  
+  /* Botones */
+  .btn-recargar,
+  .btn-cambiar-password {
+    background-color: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-recargar:hover,
+  .btn-cambiar-password:hover {
+    background-color: #5568d3;
+    transform: translateY(-2px);
+  }
+  
+  /* Formularios */
+  .recargar-form,
+  .password-form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .recargar-form input,
+  .password-form input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+  }
+  
+  .recargar-form input:focus,
+  .password-form input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+  
+  .form-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  
+  .btn-confirm,
+  .btn-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-confirm {
+    background-color: #27ae60;
+    color: white;
+  }
+  
+  .btn-confirm:hover:not(:disabled) {
+    background-color: #229954;
+  }
+  
+  .btn-confirm:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
+  
+  .btn-cancel {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .btn-cancel:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Mensajes */
+  .message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  .message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  @media (max-width: 768px) {
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .saldo-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .perfil-container {
+      padding: 10px;
+    }
+  }

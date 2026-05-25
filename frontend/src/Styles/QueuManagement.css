@@ -1,0 +1,210 @@
+.queue-management-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Selector de Atracción */
+.attraction-selector {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.attraction-selector label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.selector-dropdown {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border: 1px solid #ddd;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.selector-dropdown:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Sección de Cola */
+.queue-section {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.queue-section h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.queue-list {
+  margin-bottom: 20px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.queue-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px;
+  background: #f9f9f9;
+  border-left: 4px solid #ddd;
+  margin-bottom: 10px;
+  font-size: 13px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.queue-item.siguiente {
+  border-left-color: #667eea;
+  background: #f0f4ff;
+}
+
+.queue-item.siguiente:hover {
+  background: #e8f0ff;
+}
+
+.position {
+  color: #999;
+  font-weight: 700;
+  min-width: 35px;
+}
+
+.name {
+  flex: 1;
+  color: #333;
+  font-weight: 600;
+}
+
+.ticket {
+  background: #667eea;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badge {
+  color: #667eea;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.queue-more {
+  text-align: center;
+  color: #999;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.no-queue {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 14px;
+}
+
+.next-button {
+  width: 100%;
+  padding: 14px;
+  background: #667eea;
+  border: 2px solid #667eea;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  margin-top: 15px;
+}
+
+.next-button:hover:not(:disabled) {
+  background: #764ba2;
+  border-color: #764ba2;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.next-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Visitante Atendiendo */
+.attending-section {
+  background: white;
+  border: 2px solid #667eea;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.attending-section h4 {
+  margin: 0 0 15px 0;
+  color: #667eea;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.attending-card {
+  background: #f0f4ff;
+  padding: 18px;
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+}
+
+.attending-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.check-icon {
+  font-size: 18px;
+}
+
+.attending-item .label {
+  color: #666;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.attending-details {
+  padding-left: 28px;
+  font-size: 13px;
+}
+
+.attending-details p {
+  margin: 8px 0;
+  color: #333;
+}
+
+.attending-details p strong {
+  color: #667eea;
+}

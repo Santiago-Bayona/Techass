@@ -1,0 +1,409 @@
+.myzone-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Información Personal */
+.personal-info {
+  position: relative;
+}
+
+.info-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 25px;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.info-card h3 {
+  margin: 0 0 20px 0;
+  color: #667eea;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row .label {
+  color: #666;
+  font-weight: 600;
+}
+
+.info-row .value {
+  color: #667eea;
+  font-weight: 700;
+}
+
+/* Atracciones de Mi Zona */
+.attractions-section {
+  margin-top: 30px;
+}
+
+.attractions-section h3 {
+  color: #333;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 20px 0;
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.attractions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.attraction-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 18px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.attraction-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+  transform: translateY(-2px);
+}
+
+.attraction-card.estado-activa {
+  border-left: 5px solid #4caf50;
+}
+
+.attraction-card.estado-mantenimiento {
+  border-left: 5px solid #ff9800;
+}
+
+.attraction-card.estado-bloqueada {
+  border-left: 5px solid #f44336;
+}
+
+.attraction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.attraction-header h4 {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.estado-badge {
+  font-size: 12px;
+  background: #f0f0f0;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.attraction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+  padding: 12px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.info-item .label {
+  color: #666;
+  font-weight: 600;
+}
+
+.info-item .value {
+  color: #667eea;
+  font-weight: 700;
+}
+
+.action-btn {
+  background: transparent;
+  border: 2px solid #667eea;
+  color: #667eea;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 12px;
+  transition: all 0.2s;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.action-btn:hover {
+  background: #667eea;
+  color: white;
+}
+
+.action-btn.registrar-revision {
+  border-color: #ff9800;
+  color: #ff9800;
+}
+
+.action-btn.registrar-revision:hover {
+  background: #ff9800;
+  color: white;
+}
+
+.loading,
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 16px;
+  background: white;
+  border-radius: 12px;
+}
+
+/* ✅ ESTILOS PARA EL MODAL DE COLA */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  border-bottom: 2px solid #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.modal-close:hover {
+  transform: scale(1.2);
+}
+
+.modal-body {
+  padding: 25px;
+  min-height: 200px;
+}
+
+.loading-modal {
+  text-align: center;
+  padding: 50px;
+  color: #667eea;
+  font-size: 16px;
+}
+
+.empty-cola {
+  text-align: center;
+  padding: 50px;
+  color: #999;
+}
+
+.cola-stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f0f4ff;
+  border-radius: 8px;
+}
+
+.stat-item {
+  color: #333;
+  font-size: 14px;
+}
+
+.stat-item strong {
+  color: #667eea;
+  font-size: 18px;
+}
+
+.cola-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cola-item-modal {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.cola-item-modal:hover {
+  background: #f0f4ff;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+}
+
+.position-badge {
+  background: #667eea;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.visitante-info {
+  flex: 1;
+}
+
+.visitante-nombre {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.visitante-ticket {
+  margin: 0 0 5px 0;
+  font-size: 12px;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.visitante-hora {
+  margin: 0;
+  font-size: 11px;
+  color: #999;
+}
+
+.siguiente-badge {
+  background: #4caf50;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.modal-footer {
+  padding: 20px 25px;
+  border-top: 1px solid #e0e0e0;
+  text-align: right;
+}
+
+.btn-close {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-close:hover {
+  background: #764ba2;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

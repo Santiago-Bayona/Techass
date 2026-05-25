@@ -1,0 +1,240 @@
+.colas-container {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .colas-header {
+    margin-bottom: 25px;
+  }
+  
+  .colas-header h2 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .colas-header p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .notificacion-alerta {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 2000;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .notificacion-alerta h4 {
+    color: #856404;
+    margin-bottom: 8px;
+  }
+  
+  .notificacion-alerta p {
+    color: #856404;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .notificacion-alerta .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #856404;
+  }
+  
+  .mensaje {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  .mensaje.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .mensaje.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+  }
+  
+  .empty-state p:first-child {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .empty-state .subtext {
+    font-size: 14px;
+    color: #999;
+  }
+  
+  .colas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .cola-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .cola-card:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.1);
+  }
+  
+  .cola-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+  }
+  
+  .cola-header h3 {
+    color: #2c3e50;
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .badge.fast-pass {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+  }
+  
+  .badge.general {
+    background: #e7f3ff;
+    color: #0066cc;
+    border: 1px solid #b3d9ff;
+  }
+  
+  .cola-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 15px 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .info-item .label {
+    font-size: 12px;
+    color: #667eea;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .info-item .value {
+    font-size: 16px;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .cola-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn-cancelar {
+    flex: 1;
+    padding: 10px 15px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .btn-cancelar:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .cola-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .cola-info {
+      grid-template-columns: 1fr;
+    }
+  
+    .notificacion-alerta {
+      max-width: calc(100% - 20px);
+      left: 10px;
+      right: 10px;
+    }
+  }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido a TechPark UQ</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background-color: #ff6b35; color: white; padding: 30px; text-align: center; }
+        .content { padding: 30px; }
+        .footer { background-color: #333; color: white; padding: 15px; text-align: center; font-size: 12px; }
+        .btn { background-color: #ff6b35; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; margin: 20px 0; }
+        h1 { margin: 0; font-size: 28px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎢 ¡Bienvenido a TechPark UQ!</h1>
+        </div>
+        <div class="content">
+            <h2>Hola <span th:text="${nombre}">Usuario</span>,</h2>
+            <p>¡Gracias por registrarte en TechPark UQ, el parque de atracciones más innovador de la ciudad!</p>
+            <p>Estamos emocionados de tenerte con nosotros. Prepárate para vivir experiencias increíbles con nuestras atracciones de última generación.</p>
+            
+            <h3>🎫 Tu ticket digital:</h3>
+            <p>Ya puedes acceder al sistema con tu correo electrónico y contraseña. Explora el mapa interactivo, únete a las colas virtuales y no te pierdas ningún show.</p>
+            
+            <div style="text-align: center;">
+                <a th:href="${appUrl} + '/login'" class="btn">Ingresar al Parque</a>
+            </div>
+            
+            <h3>✨ Beneficios exclusivos:</h3>
+            <ul>
+                <li>🕐 Colas virtuales - no esperes más</li>
+                <li>🎯 Fast-Pass para prioridad en atracciones</li>
+                <li>📱 Notificaciones en tiempo real</li>
+                <li>🎁 Promociones especiales para nuevos miembros</li>
+            </ul>
+            
+            <p>¡Te esperamos para vivir aventuras inolvidables!</p>
+            <p>Atentamente,<br><strong>Equipo TechPark UQ</strong></p>
+        </div>
+        <div class="footer">
+            <p>TechPark UQ - Parque de Atracciones Inteligente</p>
+            <p>© 2026 Todos los derechos reservados</p>
+        </div>
+    </div>
+</body>
+</html>
