@@ -15,24 +15,36 @@ export default function TabZonas() {
   const fetchZonas = async () => {
     try {
       const token = localStorage.getItem('token');
-      console.log('🔍 Fetching zonas desde:', `${API_URL}/zonas`);
 
-      const response = await fetch(`${API_URL}/zonas/con-atracciones`, {
+      // 1) Intento principal: con atracciones
+      let response = await fetch(`${API_URL}/zonas/con-atracciones`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
+
+      // 2) Fallback: listar todas
+      if (!response.ok) {
+        console.warn('⚠️ /zonas/con-atracciones falló, intentando /zonas. Status:', response.status);
+
+        response = await fetch(`${API_URL}/zonas`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+      }
 
       console.log('📊 Response status:', response.status);
 
       if (response.ok) {
         const data = await response.json();
-        console.log('✅ Zonas obtenidas:', data);  // ✅ LOG
+        console.log('✅ Zonas obtenidas:', data);
         setZonas(data.data || []);
       } else {
-        console.error('❌ Error response:', response.status);  // ✅ LOG
+        console.error('❌ Error response:', response.status);
+        setZonas([]);
       }
+
       setLoading(false);
     } catch (error) {
-      console.error('❌ Error fetching zonas:', error);  // ✅ LOG
+      console.error('❌ Error fetching zonas:', error);
+      setZonas([]);
       setLoading(false);
     }
   };
@@ -53,13 +65,13 @@ export default function TabZonas() {
               key={zona.id}
               className="zona-card"
               onClick={() => setSelectedZona(zona)}
-              style={{ borderLeftColor: zona.colorRepresentativo || '#667eea' }}  
+              style={{ borderLeftColor: zona.colorRepresentativo || '#667eea' }}
             >
               <div className="zona-name">{zona.nombre}</div>
               <div className="zona-info">
-                <p>Capacidad: {zona.capacidadMaxima}</p>       
+                <p>Capacidad: {zona.capacidadMaxima}</p>
                 <p>Aforo actual: {zona.aforoActual || 0}</p>
-                <p>Atracciones: {zona.atracciones?.length || 0}</p>  
+                <p>Atracciones: {zona.atracciones?.length || 0}</p>
               </div>
               <button className="zona-btn">[Ver atracciones]</button>
             </div>

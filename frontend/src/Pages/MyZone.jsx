@@ -118,8 +118,6 @@ export default function MyZone({ operadorData }) {
 
   const handleCopiar = () => {
     const texto = `Operador: ${operadorData?.nombre || 'N/A'}
-Zona: ${operadorData?.zonaAsignada?.nombre || 'N/A'}
-Turno: ${operadorData?.turno || 'N/A'}
 Documento: ${operadorData?.documento || 'N/A'}`;
     
     navigator.clipboard.writeText(texto);
@@ -145,14 +143,6 @@ Documento: ${operadorData?.documento || 'N/A'}`;
           <div className="info-row">
             <span className="label">Email:</span>
             <span className="value">{operadorData?.email || 'N/A'}</span>
-          </div>
-          <div className="info-row">
-            <span className="label">Zona asignada:</span>
-            <span className="value">{operadorData?.zonaAsignada?.nombre || 'N/A'}</span>
-          </div>
-          <div className="info-row">
-            <span className="label">Turno:</span>
-            <span className="value">{operadorData?.turno || 'N/A'}</span>
           </div>
           <div className="info-row">
             <span className="label">Empleado #:</span>

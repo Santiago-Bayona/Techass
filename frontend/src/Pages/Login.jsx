@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/Login.css';
+import PasswordInput from './PasswordInput';
 
 const API_URL = 'http://localhost:8080/api';
 
@@ -44,11 +45,11 @@ export default function Login() {
       if (response.ok && data.success) {
         // Guardar todos los datos necesarios ✅
         const datosUsuario = data.data;
-        
+
         localStorage.setItem('token', datosUsuario.token);
         localStorage.setItem('usuarioId', datosUsuario.id);
         localStorage.setItem('rol', datosUsuario.rol);
-        
+
         // ← CAMBIO: Guardar como 'visitante' con TODOS los campos
         localStorage.setItem('visitante', JSON.stringify({
           id: datosUsuario.id,
@@ -110,13 +111,14 @@ export default function Login() {
 
           <div className="form-group">
             <label htmlFor="password">Contraseña</label>
-            <input
-              type="password"
+            <PasswordInput
               id="password"
+              name="password"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={loading}
+              required
             />
           </div>
 

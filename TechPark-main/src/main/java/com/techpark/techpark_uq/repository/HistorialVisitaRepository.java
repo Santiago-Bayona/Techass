@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface HistorialVisitaRepository extends JpaRepository<HistorialVisita, Long> {
     
-    List<HistorialVisita> findByVisitanteIdOrderByFechaVisitaDesc(Long visitanteId);
+    List<HistorialVisita> findByVisitanteIdOrderByFechaVisitaAsc(Long visitanteId);
     
     @Query("SELECT h.atraccion.id, COUNT(h) FROM HistorialVisita h GROUP BY h.atraccion.id ORDER BY COUNT(h) DESC")
     List<Object[]> findAtraccionesMasVisitadas();

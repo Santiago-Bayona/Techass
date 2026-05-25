@@ -28,6 +28,7 @@ public class ColaVirtualService {
     private final AtraccionRepository atraccionRepository;
     private final ColaVirtualRepository colaVirtualRepository;
     private final AtraccionService atraccionService;
+    private final HistorialVisitaRepository historialVisitaRepository;
 
     // Mapa en memoria: AtraccionId -> ColaPrioridad (para acceso rápido)
     private final Map<Long, ColaPrioridad<ElementoCola>> colasEnMemoria = new ConcurrentHashMap<>();
@@ -228,6 +229,22 @@ public class ColaVirtualService {
             log.info("⏱️ Tiempo de espera del visitante: {} minutos", minutosEspera);
         }
         colaVirtualRepository.save(primeraCola);
+
+        // ✅ Registrar en historial de visitas (cuando ya fue atendido)
+        HistorialVisita historial = new HistorialVisita();
+        historial.setVisitante(visitante);
+        historial.setAtraccion(atraccion);
+        historial.setFechaVisita(primeraCola.getFechaAtencion() != null
+                ? primeraCola.getFechaAtencion()
+                : LocalDateTime.now());
+        historial.setTiempoEsperaReal(primeraCola.getTiempoEsperaReal());
+
+// usoFastPass: true si fue prioridad alta (1) o ticket FAST_PASS
+        boolean usoFastPass = (primeraCola.getPrioridad() != null && primeraCola.getPrioridad() == 1)
+                || ("FAST_PASS".equalsIgnoreCase(visitante.getTicketActivo()));
+        historial.setUsoFastPass(usoFastPass);
+
+        historialVisitaRepository.save(historial);
 
         // Incrementar contador de visitantes de la atracción
         atraccionService.incrementarContador(atraccionId);

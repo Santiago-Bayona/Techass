@@ -161,6 +161,39 @@
   }
 }
 
+/* Password toggle (ojo dentro del input) */
+.password-input-group {
+  display: flex;
+  position: relative;
+}
+
+.password-input-group input {
+  flex: 1;
+  padding-right: 42px; /* deja espacio para el botón */
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  transition: opacity 0.2s;
+}
+
+.toggle-password:hover:not(:disabled) {
+  opacity: 0.7;
+}
+
+.toggle-password:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .ticks {
   position: relative;
   width: 100%;

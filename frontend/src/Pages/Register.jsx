@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/Register.css';
+import PasswordInput from './PasswordInput';
 
 const API_URL = 'http://localhost:8080/api';
 
@@ -84,7 +85,7 @@ export default function Register() {
       if (response.ok && data.success) {
         setSuccess('✅ ¡Registro exitoso! Redirigiendo al login...');
         console.log('✅ Visitante registrado:', data.data);
-        
+
         // Redirigir al login después de 2 segundos
         setTimeout(() => {
           navigate('/');
@@ -156,14 +157,15 @@ export default function Register() {
           {/* Contraseña */}
           <div className="form-group">
             <label htmlFor="password">Contraseña</label>
-            <input
-              type="password"
+
+            <PasswordInput
               id="password"
               name="password"
               placeholder="••••••••"
               value={formData.password}
               onChange={handleChange}
               disabled={loading}
+              required
             />
           </div>
 

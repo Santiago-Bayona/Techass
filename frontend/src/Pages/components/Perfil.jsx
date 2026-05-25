@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../../Styles/Perfil.css';
+import PasswordInput from '../PasswordInput';
 
 const API_URL = 'http://localhost:8080/api';
 
@@ -257,27 +258,33 @@ export default function Perfil({ visitante, onUpdate }) {
 
         {showCambiarPassword && (
           <form onSubmit={handleCambiarPassword} className="password-form">
-            <input
-              type="password"
+            <PasswordInput
               placeholder="Contraseña actual"
               value={passwordData.currentPassword}
-              onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
+              onChange={(e) =>
+                setPasswordData({ ...passwordData, currentPassword: e.target.value })
+              }
               required
             />
-            <input
-              type="password"
+
+            <PasswordInput
               placeholder="Nueva contraseña"
               value={passwordData.newPassword}
-              onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
+              onChange={(e) =>
+                setPasswordData({ ...passwordData, newPassword: e.target.value })
+              }
               required
             />
-            <input
-              type="password"
+
+            <PasswordInput
               placeholder="Confirmar nueva contraseña"
               value={passwordData.confirmPassword}
-              onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
+              onChange={(e) =>
+                setPasswordData({ ...passwordData, confirmPassword: e.target.value })
+              }
               required
             />
+
             <div className="form-buttons">
               <button type="submit" disabled={loading} className="btn-confirm">
                 {loading ? 'Procesando...' : 'Cambiar Contraseña'}

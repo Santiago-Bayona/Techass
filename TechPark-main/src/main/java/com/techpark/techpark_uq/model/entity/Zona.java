@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "zonas")
@@ -29,8 +31,9 @@ public class Zona {
     
     @Column(name = "aforo_actual")
     private Integer aforoActual = 0;
-    
+
     @OneToMany(mappedBy = "zona", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Atraccion> atracciones = new ArrayList<>();
     
     @Column(name = "color_representativo")

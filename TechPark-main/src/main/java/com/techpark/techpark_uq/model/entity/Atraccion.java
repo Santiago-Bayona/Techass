@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity
 @Table(name = "atracciones")
@@ -47,9 +51,10 @@ public class Atraccion {
     private EstadoAtraccion estado;  // ACTIVA, MANTENIMIENTO, CERRADA
     
     private String motivoCierre;  // Si está cerrada
-    
+
     @ManyToOne
     @JoinColumn(name = "zona_id")
+    @JsonBackReference
     private Zona zona;
     
     @Column(name = "posicion_x")
@@ -57,8 +62,9 @@ public class Atraccion {
     
     @Column(name = "posicion_y")
     private Double posicionY;  // Para el mapa (grafo)
-    
+
     @OneToMany(mappedBy = "atraccion")
+    @JsonIgnore
     private List<ColaVirtual> colaVirtual = new ArrayList<>();
 }
 

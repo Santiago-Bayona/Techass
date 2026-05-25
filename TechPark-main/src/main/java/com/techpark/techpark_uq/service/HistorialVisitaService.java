@@ -25,7 +25,7 @@ public class HistorialVisitaService {
     public Page<HistorialVisitaDTO> obtenerHistorialPaginado(Long visitanteId, Pageable pageable) {
         log.info("📜 Obteniendo historial paginado para visitante: {}", visitanteId);
 
-        List<HistorialVisita> todosLos = historialVisitaRepository.findByVisitanteIdOrderByFechaVisitaDesc(visitanteId);
+        List<HistorialVisita> todosLos = historialVisitaRepository.findByVisitanteIdOrderByFechaVisitaAsc(visitanteId);
 
         // Aplicar paginación manualmente
         int start = (int) pageable.getOffset();
@@ -45,7 +45,7 @@ public class HistorialVisitaService {
     public List<HistorialVisitaDTO> obtenerTodosLosHistoriales(Long visitanteId) {
         log.info("📜 Obteniendo todos los historiales para visitante: {}", visitanteId);
 
-        return historialVisitaRepository.findByVisitanteIdOrderByFechaVisitaDesc(visitanteId)
+        return historialVisitaRepository.findByVisitanteIdOrderByFechaVisitaAsc(visitanteId)
                 .stream()
                 .map(this::convertirADTO)
                 .collect(Collectors.toList());
@@ -57,7 +57,7 @@ public class HistorialVisitaService {
     public java.util.Map<String, Object> obtenerEstadisticas(Long visitanteId) {
         log.info("📊 Obteniendo estadísticas para visitante: {}", visitanteId);
 
-        List<HistorialVisita> historial = historialVisitaRepository.findByVisitanteIdOrderByFechaVisitaDesc(visitanteId);
+        List<HistorialVisita> historial = historialVisitaRepository.findByVisitanteIdOrderByFechaVisitaAsc(visitanteId);
 
         int totalVisitas = historial.size();
         double tiempoPromedioEspera = historial.isEmpty() ? 0 :

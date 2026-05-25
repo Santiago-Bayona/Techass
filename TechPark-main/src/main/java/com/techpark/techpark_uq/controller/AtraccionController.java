@@ -25,7 +25,7 @@ import java.util.List;
 public class AtraccionController {
 
     private final AtraccionService atraccionService;
-    private final HistorialVisitaService historialVisitaService;  // ← AGREGAR ESTO
+    private final HistorialVisitaService historialVisitaService;
 
     @GetMapping
     public ResponseEntity<ApiResponseDTO<List<AtraccionDTO>>> listarTodas(
@@ -196,15 +196,19 @@ public class AtraccionController {
     public ResponseEntity<ApiResponseDTO<Page<HistorialVisitaDTO>>> obtenerHistorial(
             @PathVariable Long visitanteId,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "50") int size,
             HttpServletRequest request) {
 
         System.out.println("📜 Obteniendo historial del visitante: " + visitanteId);
 
-        Pageable pageable = PageRequest.of(page, size, Sort.by("fechaVisita").descending());
+        // ✅ Orden: más viejo -> más reciente
+        Pageable pageable = PageRequest.of(page, size, Sort.by("fechaVisita").ascending());
+
+        Page<HistorialVisitaDTO> historialPage =
+                historialVisitaService.obtenerHistorialPaginado(visitanteId, pageable);
 
         return ResponseEntity.ok(ApiResponseDTO.success(
-                null,
+                historialPage,
                 "Historial obtenido exitosamente",
                 request.getRequestURI()
         ));
