@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TabZonas from './TabZonas';
 import TabAtracciones from './TabAtracciones';
 import TabUsuarios from './TabUsuarios';
-import '../../../Styles/Gestion.css';
+import '../../../Styles/gestion/Gestion.css';
 
 export default function Gestion({ adminId }) {
   const [activeTab, setActiveTab] = useState('zonas');

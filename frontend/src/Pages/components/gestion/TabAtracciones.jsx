@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../../../Styles/TabAtracciones.css';
+import '../../../Styles/gestion/TabAtracciones.css';  // ✅ RUTA CORREGIDA
 
 const API_URL = 'http://localhost:8080/api';
 
@@ -31,6 +31,7 @@ export default function TabAtracciones() {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem('token');
+      console.log('🔍 Fetching atracciones y zonas...');  // ✅ LOG
 
       const [atraccionesRes, zonasRes] = await Promise.all([
         fetch(`${API_URL}/atracciones`, {
@@ -41,19 +42,28 @@ export default function TabAtracciones() {
         })
       ]);
 
+      console.log('📊 Atracciones Response status:', atraccionesRes.status);  // ✅ LOG
+      console.log('📊 Zonas Response status:', zonasRes.status);  // ✅ LOG
+
       if (atraccionesRes.ok) {
         const data = await atraccionesRes.json();
+        console.log('✅ Atracciones obtenidas:', data);  // ✅ LOG
         setAtracciones(data.data || []);
+      } else {
+        console.error('❌ Error al obtener atracciones:', atraccionesRes.status);  // ✅ LOG
       }
 
       if (zonasRes.ok) {
         const data = await zonasRes.json();
+        console.log('✅ Zonas obtenidas:', data);  // ✅ LOG
         setZonas(data.data || []);
+      } else {
+        console.error('❌ Error al obtener zonas:', zonasRes.status);  // ✅ LOG
       }
 
       setLoading(false);
     } catch (error) {
-      console.error('❌ Error:', error);
+      console.error('❌ Error:', error);  // ✅ LOG
       setLoading(false);
     }
   };
@@ -187,40 +197,45 @@ export default function TabAtracciones() {
         </button>
       </div>
 
-      <table className="atracciones-table">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Zona</th>
-            <th>Tipo</th>
-            <th>Estado</th>
-            <th>Visitantes</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredAtracciones.map((atraccion) => (
-            <tr key={atraccion.id}>
-              <td>{atraccion.nombre}</td>
-              <td>{zonas.find((z) => z.id === atraccion.zonaId)?.nombre}</td>
-              <td>{atraccion.tipo}</td>
-              <td>{atraccion.estado}</td>
-              <td>{atraccion.visitantesActuales || 0}/{atraccion.capacidadMaxima}</td>
-              <td className="actions">
-                <button className="edit-btn" onClick={() => handleEdit(atraccion)}>
-                  [─]
-                </button>
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDeleteAtraccion(atraccion.id)}
-                >
-                  [!]
-                </button>
-              </td>
+      {/* ✅ VALIDACION DE DATOS VACIOS */}
+      {filteredAtracciones.length === 0 ? (
+        <div className="tab-loading">📭 No hay atracciones disponibles</div>
+      ) : (
+        <table className="atracciones-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Zona</th>
+              <th>Tipo</th>
+              <th>Estado</th>
+              <th>Visitantes</th>
+              <th>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredAtracciones.map((atraccion) => (
+              <tr key={atraccion.id}>
+                <td>{atraccion.nombre}</td>
+                <td>{zonas.find((z) => z.id === atraccion.zonaId)?.nombre}</td>
+                <td>{atraccion.tipo}</td>
+                <td>{atraccion.estado}</td>
+                <td>{atraccion.visitantesActuales || 0}/{atraccion.capacidadMaxima}</td>
+                <td className="actions">
+                  <button className="edit-btn" onClick={() => handleEdit(atraccion)}>
+                    [─]
+                  </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDeleteAtraccion(atraccion.id)}
+                  >
+                    [!]
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
       {showForm && (
         <form className="atraccion-form" onSubmit={handleAddAtraccion}>

@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/api/usuarios")
@@ -136,6 +138,21 @@ public class UsuarioController {
             null,
             "Contraseña cambiada exitosamente",
             request.getRequestURI()
+        ));
+    }
+
+    @GetMapping("")
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    public ResponseEntity<ApiResponseDTO<List<UsuarioDTO>>> listarTodos(
+            HttpServletRequest request) {
+
+        log.info("📋 Listando todos los usuarios");
+        List<UsuarioDTO> usuarios = usuarioService.listarTodos();
+
+        return ResponseEntity.ok(ApiResponseDTO.success(
+                usuarios,
+                "Usuarios obtenidos exitosamente",
+                request.getRequestURI()
         ));
     }
 }

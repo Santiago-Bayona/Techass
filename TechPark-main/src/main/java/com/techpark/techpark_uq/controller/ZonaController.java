@@ -39,4 +39,15 @@ public class ZonaController {
             request.getRequestURI()
         ));
     }
+
+    @GetMapping("/con-atracciones")
+    public ResponseEntity<ApiResponseDTO<List<Zona>>> listarConAtracciones(
+            HttpServletRequest request) {
+        List<Zona> zonas = zonaRepository.findAllWithAtracciones(); // ya existe en el repo
+        return ResponseEntity.ok(ApiResponseDTO.success(
+                zonas,
+                "Zonas con atracciones listadas exitosamente",
+                request.getRequestURI()
+        ));
+    }
 }
