@@ -4,6 +4,7 @@ import AdminSidebar from './components/AdminSidebar';
 import MapaAdmin from './components/MapaAdmin';
 import ClimaAdmin from './components/ClimaAdmin';
 import ReportesAdmin from './components/ReportesAdmin';
+import Gestion from './components/gestion/Gestion';
 import '../Styles/AdminDashboard.css';
 
 const API_URL = 'http://localhost:8080/api';
@@ -91,6 +92,7 @@ export default function AdminDashboard() {
         {activeTab === 'mapa' && <MapaAdmin adminData={adminData} />}
         {activeTab === 'clima' && <ClimaAdmin adminData={adminData} />}
         {activeTab === 'reportes' && <ReportesAdmin adminData={adminData} />}
+        {activeTab === 'gestion' && <Gestion adminId={adminData.id} />}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ export default function AdminSidebar({ activeTab, setActiveTab, onLogout, adminN
     { id: 'mapa', label: 'Mapa del Parque', icon: '🗺️' },
     { id: 'clima', label: 'Alertas Climáticas', icon: '⛈️' },
     { id: 'reportes', label: 'Reportes', icon: '📊' },
+    { id: 'gestion', label: 'Gestión', icon: '⚙️' },
   ];
 
   return (

@@ -1,0 +1,205 @@
+.tab-atracciones {
+    display: grid;
+    gap: 30px;
+  }
+  
+  .filtros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .filtros select,
+  .filtros input {
+    padding: 10px 12px;
+    background: rgba(15, 52, 96, 0.5);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    color: #ccc;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  
+  .filtros select:focus,
+  .filtros input:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+  
+  .new-btn {
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .new-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  }
+  
+  .atracciones-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .atracciones-table th {
+    background: rgba(15, 52, 96, 0.5);
+    padding: 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+    color: #667eea;
+  }
+  
+  .atracciones-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+    font-size: 13px;
+    color: #ccc;
+  }
+  
+  .atracciones-table tr:hover {
+    background: rgba(102, 126, 234, 0.05);
+  }
+  
+  .actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .edit-btn,
+  .delete-btn {
+    padding: 6px 10px;
+    border: 1px solid;
+    background: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .edit-btn {
+    border-color: #667eea;
+    color: #667eea;
+  }
+  
+  .edit-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+  }
+  
+  .delete-btn {
+    border-color: #e74c3c;
+    color: #e74c3c;
+  }
+  
+  .delete-btn:hover {
+    background: rgba(231, 76, 60, 0.2);
+  }
+  
+  .atraccion-form {
+    background: rgba(15, 52, 96, 0.3);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 8px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .atraccion-form h4 {
+    grid-column: 1 / -1;
+    margin: 0 0 10px 0;
+    color: #667eea;
+    font-size: 14px;
+  }
+  
+  .atraccion-form input,
+  .atraccion-form select {
+    padding: 10px 12px;
+    background: rgba(15, 52, 96, 0.5);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    color: #ccc;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  
+  .atraccion-form input:focus,
+  .atraccion-form select:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+  
+  .form-buttons {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  
+  .submit-btn,
+  .cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    flex: 1;
+  }
+  
+  .submit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+  }
+  
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  }
+  
+  .cancel-btn {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+  }
+  
+  .cancel-btn:hover {
+    background: rgba(231, 76, 60, 0.3);
+  }
+  
+  .tab-loading {
+    padding: 40px;
+    text-align: center;
+    color: #999;
+  }
+  
+  @media (max-width: 768px) {
+    .filtros {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .atraccion-form {
+      grid-template-columns: 1fr;
+    }
+  
+    .atracciones-table {
+      font-size: 11px;
+    }
+  
+    .atracciones-table th,
+    .atracciones-table td {
+      padding: 8px;
+    }
+  }

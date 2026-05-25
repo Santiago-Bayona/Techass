@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0a87bf7-bd5e-4e94-ad3b-5b3ceaec26bf" name="Changes" comment="" />
+    <list default="true" id="d0a87bf7-bd5e-4e94-ad3b-5b3ceaec26bf" name="Changes" comment="feat: add initial project structure with user authentication and dashboard components">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/AdminDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/AdminDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/Pages/components/AdminSidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/Pages/components/AdminSidebar.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +20,21 @@
       <entry key="_C:/Users/santi/Documentos/TechPark-main 2/TechPark-main 2" value="3ECUChMgqpBGv6nV3Fe0n9fS509" />
     </persistenceIdMap>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Santiago-Bayona"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Santiago-Bayona/Techass.git",
+    "accountId": "572b1a03-393b-42b9-b32c-e8cbde3ef2b7"
+  }
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -28,6 +47,7 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="3E2ic0inytn66QN37vJAbLU6nck" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -35,6 +55,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/santi/Documentos/TechPark-main 2/TechPark-main 2/TechPark-main",
     "node.js.detected.package.eslint": "true",
@@ -74,11 +95,25 @@
       <updated>1779383141571</updated>
       <workItem from="1779383143816" duration="431000" />
       <workItem from="1779681920046" duration="8000" />
+      <workItem from="1779732246157" duration="881000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: add initial project structure with user authentication and dashboard components">
+      <option name="closed" value="true" />
+      <created>1779732507064</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1779732507064</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: add initial project structure with user authentication and dashboard components" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add initial project structure with user authentication and dashboard components" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

@@ -1,0 +1,119 @@
+.tab-zonas {
+    display: grid;
+    gap: 30px;
+  }
+  
+  .tab-zonas h3 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #667eea;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .zonas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  .zona-card {
+    background: rgba(15, 52, 96, 0.3);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 4px solid;
+  }
+  
+  .zona-card:hover {
+    border-color: #667eea;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  .zona-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+  
+  .zona-info {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .zona-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #ccc;
+  }
+  
+  .zona-btn {
+    padding: 8px 12px;
+    background: rgba(102, 126, 234, 0.2);
+    border: 1px solid #667eea;
+    color: #667eea;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .zona-btn:hover {
+    background: rgba(102, 126, 234, 0.3);
+  }
+  
+  .zona-details {
+    background: rgba(15, 52, 96, 0.3);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 20px;
+  }
+  
+  .zona-details h4 {
+    margin: 0 0 15px 0;
+    color: #667eea;
+    font-size: 16px;
+  }
+  
+  .zona-details p {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    color: #ccc;
+  }
+  
+  .close-btn {
+    padding: 8px 16px;
+    background: rgba(231, 76, 60, 0.2);
+    border: 1px solid #e74c3c;
+    color: #e74c3c;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: all 0.2s ease;
+  }
+  
+  .close-btn:hover {
+    background: rgba(231, 76, 60, 0.3);
+  }
+  
+  .tab-loading {
+    padding: 40px;
+    text-align: center;
+    color: #999;
+  }
+  
+  @media (max-width: 480px) {
+    .zonas-grid {
+      grid-template-columns: 1fr;
+    }
+  }
